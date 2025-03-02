@@ -4,7 +4,31 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Our approach follows an encoder-decoder methodology similar to prior work 
+                        on out-of-distribution robustness and group fairness to establish independence between the sensitive feature (S) 
+                        and the fair label (Y_f). Given a dataset with sensitive feature (S), observed label (Y), and non-confounding 
+                        features (X), we treat Y as a proxy variable to derive the fair label Y_f.
+
+                        The model consists of three main components:
+                        
+                        Encoder: Generates an intermediate label (pseudo_Y) from X, which will later be de-biased from S.
+                        Adversarial Branch: Uses an adversary and a Gradient Reversal Layer (GRL) to remove unfair dependencies of S from pseudo_Y, 
+                                                ensuring independence between them.
+                        Decoder: Predicts Y using both pseudo_Y and S, ensuring that only fair dependencies on S are retained for accurate and unbiased predictions.
+                        The model optimizes three loss functions:
+                        
+                        Classification loss ensures pseudo_Y aligns with Y.
+                        Adversarial loss forces pseudo_Y to be independent of S by minimizing adversary accuracy.
+                        Decoder loss ensures Y_pred remains an accurate and fair prediction of Y.
+                        Overall, this adversarial learning approach guarantees fair and accurate predictions by systematically removing biased dependencies while 
+                                                retaining necessary information.
+                        
+                        In the first graph below, X is the covariate, Y is the label, Z is the confounder, S is the proxy, taken from the paper, ([“Scalable 
+                                                Out-of-distribution Robustness in the Presence of Unobserved Con-founders.”] (https://arxiv.org/abs/2411.19923)) 
+                                                The second graph is the adjusted node graph to represent our model which includes the sensitive feature. 
+                                                In this graph, X is the covariate, S is the sensitive feature, pseudo Y is the independent Y label of S, Y final 
+                                                is the final fair label predicted from S and pseudo Y. In both graphs, the shaded circles represent unobserved 
+                                                variables and the unshaded ones represent observed variables.</h3>
                 </div>
             </div>
             <div class="row">
