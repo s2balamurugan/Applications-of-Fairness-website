@@ -32,8 +32,21 @@
                                                 In this graph, X is the covariate, S is the sensitive feature, pseudo Y is the independent Y label of S, Y final 
                                                 is the final fair label predicted from S and pseudo Y. In both graphs, the shaded circles represent unobserved 
                                                 variables and the unshaded ones represent observed variables.</p><br>
-                    <img src="img/graph1.jpg" class="img-responsive img-centered" >
-                    <img src="img/graph2.png" class="img-responsive img-centered" >
+                    <style>
+                        .grid-container {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10px;
+                        }
+                        .grid-container img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    </style>
+                    <div class="grid-container">
+                        <img src="img/graph1.jpg" class="img-responsive img-centered" >
+                        <img src="img/graph2.png" class="img-responsive img-centered" >
+                    </div>
                     <br><center><h2 class="section-heading">Datasets Implemented</h2></center>
                         <p>We implemented three datasets, UCI Adult, German Credit and COMPAS dataset.</p>
                         
