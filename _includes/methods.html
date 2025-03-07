@@ -4,24 +4,24 @@
             <div class="row">
                 <div class="col-lg-12">
                     <center><h2 class="section-heading">Methods</h2></center>
-                    <p>Our approach follows an encoder-decoder methodology similar to prior work 
-                        on out-of-distribution robustness and group fairness to establish independence between the sensitive feature (S) 
-                        and the fair label (Y_f). Given a dataset with sensitive feature (S), observed label (Y), and non-confounding 
-                        features (X), we treat Y as a proxy variable to derive the fair label Y_f.
+                    <p>Our approach follows an <b>encoder-decoder methodology</b> similar to prior work 
+                        on out-of-distribution robustness and group fairness to establish independence between the <b>sensitive feature (S)</b> 
+                        and the <b>fair label (Y_f)</b>. Given a dataset with sensitive feature (S), observed label (Y), and <b>non-confounding 
+                        features (X)</b>, we treat <b>Y as a proxy variable</b> to derive the fair label Y_f.
 
-                        <br>The model consists of three main components:
+                        <br>The model consists of <b>three main components</b>:
                         <ol>
-                            <li>Encoder: Generates an intermediate label (pseudo_Y) from X, which will later be de-biased from S.</li>
-                            <li>Adversarial Branch: Uses an adversary and a Gradient Reversal Layer (GRL) to remove unfair dependencies of S from pseudo_Y, 
+                            <li><b>Encoder:</b> Generates an intermediate label (pseudo_Y) from X, which will later be de-biased from S.</li>
+                            <li><b>Adversarial Branch:</b> Uses an adversary and a Gradient Reversal Layer (GRL) to remove unfair dependencies of S from pseudo_Y, 
                                                 ensuring independence between them.</li>
-                            <li>Decoder: Predicts Y using both pseudo_Y and S, ensuring that only fair dependencies on S are retained for accurate and unbiased predictions.</li>
+                            <li><b>Decoder:</b> Predicts Y using both pseudo_Y and S, ensuring that only fair dependencies on S are retained for accurate and unbiased predictions.</li>
                         </ol>
                         
-                        <br>The model optimizes three loss functions:
+                        <br>The model optimizes <b>three loss functions</b>:
                         <ol>
-                            <li>Classification loss ensures pseudo_Y aligns with Y.</li>
-                            <li>Adversarial loss forces pseudo_Y to be independent of S by minimizing adversary accuracy.</li>
-                            <li>Decoder loss ensures Y_pred remains an accurate and fair prediction of Y.</li>
+                            <li><b>Classification loss</b> ensures pseudo_Y aligns with Y.</li>
+                            <li><b>Adversarial loss</b> forces pseudo_Y to be independent of S by minimizing adversary accuracy.</li>
+                            <li><b>Decoder loss</b> ensures Y_pred remains an accurate and fair prediction of Y.</li>
                         </ol>
                         
                         <br><p>Overall, this adversarial learning approach guarantees fair and accurate predictions by systematically removing biased dependencies while 
