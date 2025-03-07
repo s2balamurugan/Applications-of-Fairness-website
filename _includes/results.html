@@ -18,6 +18,23 @@
                     <img src="img/2_synthetic_multiClass_comparison_plot (1).png" class="img-responsive img-centered" >
                     
                     <br><center><h2 class="section-heading">Discussion</h2></center>
+                    <p>
+                        We evaluated our model on both synthetic and real-world datasets for cases with binary and multi-class observed 
+                        labels. For binary data, our results show that the model effectively reduces demographic parity difference while 
+                        maintaining similar Area Under the Curve (AUC) and accuracy scores. This is most evident in our synthetic dataset, 
+                        where the model successfully removed the injected bias, aligning AUC, accuracy, and demographic parity difference 
+                        with those of the original unbiased data. However, for real-world datasets, since we assume complete independence 
+                        from the sensitive feature, there is a slight trade-off between demographic parity difference and AUC/accuracy.
+                        
+                        For multi-class data, the model remains effective, but the trade-off between demographic parity and AUC/accuracy is 
+                        more pronounced. In the synthetic dataset, the model reduced the demographic parity difference compared to the biased 
+                        dataset, though it did not fully reach the fairness level of the original dataset. Additionally, accuracy declined when 
+                        compared to the original fair data. A similar trend was observed in the Drug Consumption dataset, emphasizing the need 
+                        for further improvements to enhance performance in multi-class scenarios. Overall, this model helps mitigate bias between 
+                        the observed label and sensitive features, ensuring that outcomes are not unfairly influenced or discriminatory. Future 
+                        work will focus on testing the model in a wider range of scenarios, including cases where the sensitive feature itself is 
+                        multi-class.
+                    </p>
                 </div>
             </div>
         </div>
