@@ -1,3 +1,14 @@
 ---
 layout: style
 ---
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .grid-container img {
+        width: 100%;
+        height: auto;
+    }
+</style>
