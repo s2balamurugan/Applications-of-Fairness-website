@@ -44,15 +44,27 @@
                     
                     <br><center><h3 class="section-heading">Synthetic Dataset (Binary)</h3></center>
                     <img src="img/2_synthetic_binary_comparison_plot (3).png" class="img-responsive img-centered" >
+                    <br><p>Fair model was able to retrieve high accuracy while significantly reducing demographic parity difference, 
+                        compared to the injected bias scenario. The baseline scenarios serves as reference to show that the model 
+                        effectively removes label bias and recovers fair labels. Observed label is binary.</p>
                     
                     <br><center><h3 class="section-heading">UCI Adult Dataset (Binary)</h3></center>
                     <img src="img/2_adult_comparison_plot (2).png" class="img-responsive img-centered" >
+                    <br><p>On real-world data, the fair latent variable model reduces demographic parity difference while maintaining nearly 
+                        the same accuracy. This demonstrates model’s ability to mitigate bias while preserving performance. Observed label 
+                        is binary.</p>
 
                     <br><center><h3 class="section-heading">COMPAS Dataset (Binary)</h3></center>
                     <img src="img/2_compas_comparison_plot (2).png" class="img-responsive img-centered" >
+                    <br><p>Fair latent variable model effectively removes bias, reducing demographic parity difference, while maintaining the 
+                        same AUC score. This indicates that model is able to balance fairness with predictive capabilities. Observed label 
+                        is binary.</p>
 
                     <br><center><h3 class="section-heading">Canabis Consumption Dataset (Multiclass)</h3></center>
                     <img src="img/2_synthetic_multiClass_comparison_plot (1).png" class="img-responsive img-centered" >
+                    <br><p>In a setting where the observed label is multi-class, the model reduces demographic parity difference, indicating the 
+                        mitigation of label bias. However, there is a drop in the area under the curve (AUC) score, highlighting a common 
+                        fairness-performance trade-off.</p>
                     
                     
                     <br><center><h2 class="section-heading">Discussion</h2></center>
