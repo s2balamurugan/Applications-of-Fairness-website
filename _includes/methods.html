@@ -37,13 +37,21 @@
                     <br><center><h2 class="section-heading">Datasets Implemented</h2></center>
                         <p>We evaluate our model on both synthetic and real-world datasets.</p>
                         <ol>
+                            <!--
                             <li>
                                 <b>Binary Synthetic Dataset:</b> Synthetic dataset created to evaluate model performance under ideal conditions where the observed label is binary, 
                                 with 5000 rows and 30 features. It consists of a sensitive binary feature S sampled from a binomial distribution, a feature matrix X influenced by
                                 S and multinomial noise, and a target variable Y derived from a linear function of X with added noise. With this we have binary fair 
                                 labels Y. To get unfair labels, we inject Y with bias by systematically modifying labels assigned based on S. Y labels will be modified so 
-                                that Y = 1 is more likely for samples where S=1, while Y=0 are for samples where S=0.
+                                that Y = 1 is more likely for samples where S=1, while Y=0 are for samples where S=0. 
                             </li>
+                            -->
+                            <li>
+                                <b>Binary Synthetic Dataset:</b>A controlled dataset with 5,000 rows and 30 features, used to assess model performance under ideal conditions. It 
+                                includes a sensitive binary feature S, a feature matrix X influenced by S, and a target variable Y derived from X with noise. Fair labels are 
+                                unbiased, while unfair labels introduce bias, making Y = 1 more likely when S = 1. 
+                            </li>
+                            <!--
                             <li>
                                 <b>UCI Adult dataset:</b> Popular dataset for determining if a person makes more than $50,000 annually and is obtained from 
                                 the U.S. Census Bureau [5]. It includes information about age, education, occupation, work class, marital status, and weekly hours worked, among 
@@ -51,6 +59,13 @@
                                 actual income distribution inequalities, is often utilized in fairness and prejudice research. The sensitive feature that we will be using is gender, 1 if male and 0 
                                 if female. The observed unfair label is income; 1 if >50K and 0 if less than $50K. 
                             </li>
+                            -->
+                            <li>
+                                <b>UCI Adult dataset:</b> Census-based dataset with 32,561 rows and 5 non-sensitive features, used for income classification (>50K or ≤50K). It 
+                                includes information about age, education, occupation, work class, marital status, and weekly hours worked, among other demographic and employment 
+                                variables. The sensitive feature is gender (1 = male, 0 = female). It reflects real-world income disparities and is widely used in fairness research.
+                            </li>
+                            <!--
                             <li>
                                 <b>COMPAS dataset:</b> Criminal justice data used to determine the probability of recidivism (reoffending) based on demographic and 
                                 criminal history criteria may be found in the COMPAS dataset, which is gathered by ProPublica [4]. Features including age, sex, race, past crimes, 
@@ -60,6 +75,15 @@
                                 the sensitive feature is race - 1 if African-American, 0 if not African-American. The observed label is prediction of recidivism - 1 if they 
                                 will reoffend within a 2 year frame and 0 if they won’t.
                             </li>
+                            -->
+                            <li>
+                                <b>COMPAS dataset:</b> Criminal justice data used to determine the probability of recidivism (reoffending) based on demographic and 
+                                criminal history criteria may be found in the COMPAS dataset, which is gathered by ProPublica [4]. The dataset has 7,214 rows and 5 non-confounding 
+                                features, predicting recidivism (1 = reoffend, 0 = not). The sensitive feature is race (1 = African-American, 0 = otherwise). It highlights racial 
+                                biases in predictive policing and algorithmic fairness debates.
+                            </li>
+
+                            <!--
                             <li>
                                 <b>UCI Drug (Cannabis) Consumption Dataset</b> This dataset is originally from UCI Machine Learning Repository [2]. This dataset contains 1884 rows
                                 and 10 non-confounding features. It includes information about how frequently an individual uses cannabis, along with personal information like
@@ -67,6 +91,13 @@
                                 dataset so there are 4 groups of likeliness:  (1) never used, (2) not used in the last year, (3) used in the last year, (4) used in the last
                                 week. For this dataset, the sensitive feature is education level - 1 if received higher education, 0 if didn’t receive higher education. The
                                 observed label is likeliness of cannabis use. 
+                            </li>
+                            -->
+                            <li>
+                                <b>UCI Drug (Cannabis) Consumption Dataset</b> This dataset is originally from UCI Machine Learning Repository [2] with 1,884 rows and 10 
+                                non-confounding features, predicting cannabis use across four levels. It includes information about how frequently an individual uses cannabis, 
+                                along with personal information like gender, ethnicity, and country.The sensitive feature is education level (1 = higher education, 0 = no 
+                                higher education). The use of this dataset is to predict how likely an individual is to consume cannabis.
                             </li>
                         </ol>
                     <br><center><h2 class="section-heading">Evaluation Metrics</h2></center>
