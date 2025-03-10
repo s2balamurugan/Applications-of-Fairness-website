@@ -75,17 +75,20 @@
                         Our model effectively reduced demographic parity while maintain high performance. In synthetic data, it successfully 
                         removed injected bias, aligning accuracy and demographic parity difference with the original fair data.
                         For real-world dataset: 
-                        <ol>
-                            <li><b>UCI Adults:</b> Maintained accuracy while reducing demograph parity by <b>50%</b>.</li>
-                            <li><b>COMPAS:</b> Maintained AUC while lowering demographic parity difference by <b>30%</b>.</li>
-                        </ol> 
                     </p>
+                    <ol>
+                        <li><b>UCI Adults:</b> Maintained accuracy while reducing demograph parity by <b>50%</b>.</li>
+                        <li><b>COMPAS:</b> Maintained AUC while lowering demographic parity difference by <b>30%</b>.</li>
+                    </ol>
+
                     <p><b>Multi-Class Data Results</b><br>
                         The fairness-performance trade-off was more pronounced. For the Cannabis Consumption dataset, demographic parity difference
                         decreased by <b>33%</b>, but AUC dropped by <b>13%</b>, indicated the need for improvements in the multi-class settings. 
                     </p>
                     Our model enables recover of the fair label's distribution by enforcing independence between sensitive features and observed labels.
-                    However, this often comes at the cost of reduced performance, especially in multi-class cases.
+                    However, this often comes at the cost of reduced performance, especially in multi-class cases.<br><br>
+
+                    <b>Explore the results yourself!</b>Find all our code <a href="https://github.com/linabat/fairness-application">here</a>:
                 </div>
             </div>
         </div>

@@ -1,30 +1,4 @@
-Agency Jekyll theme
-====================
+Check out our [capstone website](https://s2balamurugan.github.io/agency-jekyll-theme/) with our objective and findings! 
+Find our [project repo](https://github.com/linabat/fairness-application) with all the results! Try running them yourself!
 
-Agency theme based on [Agency bootstrap theme ](https://startbootstrap.com/template-overviews/agency/)
-
-# How to use
-
-###Portfolio 
-
-Portfolio projects are in '/_posts'
-
-Images are in '/img/portfolio'
-
-###About
-
-Images are in '/img/about/'
-
-###Team
-
-Team members and info are in '_config.yml'
-
-Images are in '/img/team/'
-
-
-# Demo
-
-View this jekyll theme in action [here](https://y7kim.github.io/agency-jekyll-theme)
-
-=========
-For more details, read [documentation](http://jekyllrb.com/)
+Have questions? Reach out to Lina (lbattikha@ucsd.edu) or Sai (s2balamurugan@ucsd.edu)
