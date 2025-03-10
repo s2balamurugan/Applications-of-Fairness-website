@@ -66,6 +66,17 @@
                                 observed label is likeliness of cannabis use.</p>
 
                     <br><center><h2 class="section-heading">Evaluation Metrics</h2></center>
+                        <p>Once we obtained the fair latent variable from the encoder-decoder model, we evaluated its performance using logistic regression. A baseline model
+                            was trained on X and observed Y, while another was trained on preprocessed X and fair labels (pseudo_Y). We evaluated performance using the 
+                            following metrics:
+                        </p>
+                        <ol>
+                            <li><b>Demographic Parity Difference:</b>Measures the absolute difference in class label proportions across sensitive groups, 
+                                ideally close to 0 to ensure fairness.</li>
+                            <li><b>Area Under the Curve (AUC):</b>Evaluates the model's ability to distinguish between classes, using a one-vs-rest approach for multi-class cases.</li>
+                            <li><b>Accuracy:</b>The proportion of correctly predicted labels, providing an overall performance measure.</li>
+                        </ol>
+                        <p><b>These metrics help quantify fairness and performance in the learned fair representations.</b></p>
                 </div>
             </div>
         </div>
