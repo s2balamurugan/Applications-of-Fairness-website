@@ -35,24 +35,37 @@
                     <img src="img/causal_graph.png" class="img-responsive img-centered" >
                     <br>
                     <br><center><h2 class="section-heading">Datasets Implemented</h2></center>
-                        <p>We implemented four datasets Synthetic dataset, UCI Adult, German Credit and COMPAS dataset.</p>
+                        <p>We evaluate our model on both synthetic and real-world datasets.</p>
 
-                        <br><p>The <b>Synthetic Dataset</b> is a fair dataset with injected error to evaluate effectiveness of model, with 5000 rows and 30 features. The 
-                            sensitive feature and observed biased label have 2 classes</p>
+                        <br><p>The <b>Binary Synthetic Dataset:</b> This dataset was synthetically created to evaluate model performance under ideal conditions where the observed label is binary, 
+                            with 5000 rows and 30 features. It consists of a sensitive binary feature S sampled from a binomial distribution, a feature matrix \(X\) influenced by
+                             S and multinomial noise, and a target variable Y derived from a linear function of \(X\) with added noise. With this we have binary fair 
+                             labels Y. To get unfair labels, we inject Y with bias by systematically modifying labels assigned based on S. Y labels will be modified so 
+                             that Y = 1 is more likely for samples where S=1, while Y=0 are for samples where S=0.</p>
                         
-                        <br><p>The <b>UCI Adult dataset</b> is derived from the U.S. Census Bureau, it predicts whether an individual earns more than 
-                        $50,000 annually based on factors like age, education, occupation, and work hours. Due to its reflection of real-world
-                        income inequalities, it is widely used in fairness and bias research as a benchmark for classification models.</p>
+                        <br><p>The <b>UCI Adult dataset:</b> This dataset a popular tool for determining if a person makes more than $50,000 annually and is obtained from 
+                            the U.S. Census Bureau. It includes information about age, education, occupation, work class, marital status, and weekly hours worked, among 
+                            other demographic and employment variables. This is a larger dataset with 32,561 rows and 5 non-sensitive features. The dataset, which represents 
+                            actual income distribution inequalities, is often utilized in fairness and prejudice research. Due to its structured nature, it serves as a 
+                            benchmark for classification models in machine learning. In this dataset, the sensitive feature that we will be using is gender, 1 if male and 0 
+                            if female. The observed unfair label is income; 1 if >50K and 0 if less than $50K. </p>
                         
-                        <br><p>The <b>German Credit dataset</b> is provided by the UCI Machine Learning Repository, it assesses credit risk by categorizing 
-                        applicants as “good” or “bad” credit risks. It includes features like work status, financial history, home situation, 
-                        and personal demographics (age, sex, etc.). The dataset is crucial in evaluating bias in financial decision-making and 
-                        credit scoring models.</p>
-                        
-                        <br><p>The <b>COMPAS dataset</b> is collected by ProPublica, it predicts recidivism risk (reoffending probability) using features 
-                        such as age, sex, race, past crimes, and COMPAS risk scores. Research has shown racial disparities in risk assessment, 
-                        making it central to discussions on algorithmic fairness and bias in the criminal justice system.</p>
-                    </p>
+                        <br><p>The <b>COMPAS dataset:</b> Criminal justice data used to determine the probability of recidivism (reoffending) based on demographic and 
+                            criminal history criteria may be found in the COMPAS dataset, which is gathered by ProPublica. Features including age, sex, race, past crimes, 
+                            and COMPAS risk scores are among them. This dataset has 7214 rows and 5 non-confounding features. Studies have revealed that the COMPAS risk 
+                            assessment tool includes racial discrepancies, making it a crucial resource for assessing ethical difficulties in judicial decision-making and 
+                            predictive policing. As a result, this dataset has been at the center of arguments on algorithmic fairness and bias. For this dataset, 
+                            the sensitive feature is race - 1 if African-American, 0 if not African-American. The observed label is prediction of recidivism - 1 if they 
+                            will reoffend within a 2 year frame and 0 if they won’t.</p>
+
+                        <br><p>The <b>UCI Drug (Cannabis) Consumption Dataset</b> This dataset is taken from UCI Machine Learning Repository. This dataset contains 1884 rows
+                             and 10 non-confounding features. It includes information about how frequently an individual uses cannabis, along with personal information like
+                              gender, ethnicity, and country. The use of this dataset is to predict how likely an individual is to consume cannabis. We pre-process the
+                               dataset so there are 4 groups of likeliness:  (1) never used, (2) not used in the last year, (3) used in the last year, (4) used in the last
+                                week. For this dataset, the sensitive feature is education level - 1 if received higher education, 0 if didn’t receive higher education. The
+                                observed label is likeliness of cannabis use.</p>
+
+                    <br><center><h2 class="section-heading">Evaluation Metrics</h2></center>
                 </div>
             </div>
         </div>
