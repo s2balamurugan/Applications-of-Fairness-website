@@ -4,32 +4,33 @@
             <div class="row">
                 <div class="col-lg-12">
                     <center><h2 class="section-heading">Methods</h2></center>
-                    <p>Our approach follows an <b>encoder-decoder methodology</b> similar to prior work 
-                        on out-of-distribution robustness and group fairness to establish independence between the <b>sensitive feature (S)</b> 
-                        and the <b>fair label (Y_f)</b>. Given a dataset with sensitive feature (S), observed label (Y), and <b>non-confounding 
-                        features (X)</b>, we treat <b>Y as a proxy variable</b> to derive the fair label Y_f.
+                    <p>Our approach uses a similar encoder-decoder methodology as used in the Scalable Out-of-distribution Robustness in the Presence of Unobserved Confounders [1]
+                    while establishing independence between the sensitive feature and fair observed label as mentioned in the Group Fairness by 
+                    Probabilistic Modeling with Latent Fair Decisions paper [2]. Given a dataset that has an identifiable sensitive feature 
+                    <b>S</b>, an observed biased label <b>Y</b>, and non-confounding features <b>X</b>, we treat <b>Y</b> as the proxy variable that will be used in the model to recover 
+                    the true fair label <b>Y_f</b>.</p>
 
-                        <br>The model consists of <b>three main components</b>:
-                        <ol>
-                            <li><b>Encoder:</b> Generates an intermediate label (pseudo_Y) from X, which will later be de-biased from S.</li>
-                            <li><b>Adversarial Branch:</b> Uses an adversary and a Gradient Reversal Layer (GRL) to remove unfair dependencies of S from pseudo_Y, 
-                                                ensuring independence between them.</li>
-                            <li><b>Decoder:</b> Predicts Y using both pseudo_Y and S, ensuring that only fair dependencies on S are retained for accurate and unbiased predictions.</li>
-                        </ol>
-                        
-                        <br>The model optimizes <b>three loss functions</b>:
-                        <ol>
-                            <li><b>Classification loss</b> ensures pseudo_Y aligns with Y.</li>
-                            <li><b>Adversarial loss</b> forces pseudo_Y to be independent of S by minimizing adversary accuracy.</li>
-                            <li><b>Decoder loss</b> ensures Y_pred remains an accurate and fair prediction of Y.</li>
-                        </ol>
-                        
-                        <br><p>Overall, this adversarial learning approach guarantees fair and accurate predictions by systematically removing biased dependencies while 
-                                                retaining necessary information.</p>
-                        
-                        <br><p>The graph below is the adjusted node graph to represent our model which includes the sensitive feature. 
-                                                In this graph, X is the non-confounding feature, S is the sensitive feature, and we treat Y as the
-                            proxy variable that will be used in the model to recover the true fair label Y_f</p><br>
+                    <br>The model consists of <b>three main components</b>:
+                    <ol>
+                        <li><b>Encoder:</b> Forward pass of retrieving pseudo_Y, given X. pseud_Y will be the intermediate label that will be used to establish independence with S. 
+                            It works to avoid direct dependence on S.</li>
+                        <li><b>Adversarial Branch:</b> This branch tests whether pseudo_Y retains information about S by attempting to predict S from pseudo_Y. 
+                            If successful, it indicates dependence. To counteract this, the encoder learns to remove S-related information using a Gradient Reversal Layer 
+                            (GRL), which flips the gradient to prevent encoding S in pseudo_Y. While the adversary minimizes the loss between predicted and true S, the GRL 
+                            forces the encoder to maximize this loss, reducing dependencies. This adversarial training occurs during backpropagation, with the encoder and 
+                            adversary working against each other. If pseudo_Y becomes independent of S, the adversary ultimately fails, achieving the desired outcome.</li>
+                        <li><b>Decoder:</b> PThe decoder will try to predict Y given S and pseudo_Y. While we are trying to establish independence between Y and S by
+                             removing unfair dependencies of S on Y, some fair dependencies can still exist. For this reason, pseudo_Y and S are being used to predict 
+                             Y so that the output includes accurate and fair results.</li>
+                    </ol>
+                    
+                    
+                    <br><p>There are two scenarios which we applied this model to. The first scenario is where both the sensitive feature and the observed label are binary, 
+                        meaning the values in each column are either 1 or 0. The second scenario is where the sensitive feature is binary (1 or 0), while the observed label 
+                        is multi-class (not limited to 1 or 0).</p>
+                    
+                    <br><p>The graph below is a representation the underlying causal graph of our model. We know that <b>Y_biased is of the same distribution of Y_fair</b>, 
+                            however, with its probabilities affected by S (the senstive feature); <b></b>we are able to recover Y_fair by establishing independence between S and Y_biased</b>. </p><br>
                 
                     <img src="img/causal_graph.png" class="img-responsive img-centered" >
                     <br>

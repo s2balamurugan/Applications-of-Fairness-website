@@ -267,7 +267,7 @@ fieldset[disabled] .btn-xl.active {
 
 header {
     text-align: center;
-    color: #fff;
+    color: #145add;
     background-attachment: scroll;
     background-image: url('{{ site.baseurl }}/img/balance_scale.png');
     background-position: center center;
