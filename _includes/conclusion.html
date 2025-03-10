@@ -3,8 +3,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Conclusion</h2>
-                    <p>Our work focuses on developing a fairness-aware algorithm that discovers 
+                    <h2 class="section-heading">Limitations & Future Work</h2>
+                    <p><b>Limitations:</b> A key limitation was the limited availability of diverse, up-to-date datasets for evaluating fairness algorithms.
+                         While commonly used datasets serve as benchmarks, they may not fully capture real-world complexities. Additionally, identifying sensitive 
+                         features is often challenging, and handling multiple sensitive attributes within a dataset adds further complexity.</p>
+                    
+                    <p><b>Future Work: </b>
+                    While our work this quarter demonstrated the model's efficacy on both synthetic and real-world datasets, future work needs to focus on improving its 
+                    robustness. One key area is enhancing performance when the sensitive feature is binary, but the observed label is multi-class. More testing is needed on 
+                    datasets with varying class counts, as our current multi-class evaluations were limited to four classes. Additionally, the model should be extended to 
+                    handle cases where the sensitive attribute is not binary, for both binary and multi-class observed labels. <br>
+                    Another important step is evaluating Y_pred. While we focused on pseudo_Y to assess independence, 
+                    real-world cases may involve fair dependencies between the sensitive feature and Y. Once independence is well established, 
+                    evaluating Y_pred can help balance fairness and accuracy. Scalability should also be explored by testing on larger datasets beyond our current 
+                    limit of ~32,000 rows to ensure reliability in real-world applications. Finally, it is crucial to develop guidelines on when to prioritize independence 
+                    over accuracy and how to adjust the lambda value accordingly. These improvements will help refine the model for broader and more practical applications.</p>
+
+                    <p>@SAI: DECIDE IF WE SHOULD KEEP OR REMOVE: Our work focuses on developing a fairness-aware algorithm that discovers 
                         latent variables to mitigate biases in predictive models. By leveraging an encoder-decoder framework with 
                         adversarial biasing, we ensure that sensitive attributes do not unfairly influence predictions while preserving 
                         meaningful patterns in the data. Our approach is evaluated on well-established fairness datasets, demonstrating 
