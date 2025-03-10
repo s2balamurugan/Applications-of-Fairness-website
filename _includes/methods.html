@@ -12,14 +12,14 @@
 
                     <br>The model consists of <b>three main components</b>:
                     <ol>
-                        <li><b>Encoder:</b> Forward pass of retrieving pseudo_Y, given X. pseud_Y will be the intermediate label that will be used to establish independence with S. 
+                        <li><b>Encoder:</b> Forward pass of retrieving pseudo_Y, given X. pseudo_Y will be the intermediate label that will be used to establish independence with S. 
                             It works to avoid direct dependence on S.</li>
                         <li><b>Adversarial Branch:</b> This branch tests whether pseudo_Y retains information about S by attempting to predict S from pseudo_Y. 
                             If successful, it indicates dependence. To counteract this, the encoder learns to remove S-related information using a Gradient Reversal Layer 
                             (GRL), which flips the gradient to prevent encoding S in pseudo_Y. While the adversary minimizes the loss between predicted and true S, the GRL 
                             forces the encoder to maximize this loss, reducing dependencies. This adversarial training occurs during backpropagation, with the encoder and 
                             adversary working against each other. If pseudo_Y becomes independent of S, the adversary ultimately fails, achieving the desired outcome.</li>
-                        <li><b>Decoder:</b> PThe decoder will try to predict Y given S and pseudo_Y. While we are trying to establish independence between Y and S by
+                        <li><b>Decoder:</b> The decoder will try to predict Y given S and pseudo_Y. While we are trying to establish independence between Y and S by
                              removing unfair dependencies of S on Y, some fair dependencies can still exist. For this reason, pseudo_Y and S are being used to predict 
                              Y so that the output includes accurate and fair results.</li>
                     </ol>
@@ -36,35 +36,40 @@
                     <br>
                     <br><center><h2 class="section-heading">Datasets Implemented</h2></center>
                         <p>We evaluate our model on both synthetic and real-world datasets.</p>
-
-                        <br><p>The <b>Binary Synthetic Dataset:</b> This dataset was synthetically created to evaluate model performance under ideal conditions where the observed label is binary, 
-                            with 5000 rows and 30 features. It consists of a sensitive binary feature S sampled from a binomial distribution, a feature matrix \(X\) influenced by
-                             S and multinomial noise, and a target variable Y derived from a linear function of \(X\) with added noise. With this we have binary fair 
-                             labels Y. To get unfair labels, we inject Y with bias by systematically modifying labels assigned based on S. Y labels will be modified so 
-                             that Y = 1 is more likely for samples where S=1, while Y=0 are for samples where S=0.</p>
-                        
-                        <br><p>The <b>UCI Adult dataset:</b> This dataset a popular tool for determining if a person makes more than $50,000 annually and is obtained from 
-                            the U.S. Census Bureau. It includes information about age, education, occupation, work class, marital status, and weekly hours worked, among 
-                            other demographic and employment variables. This is a larger dataset with 32,561 rows and 5 non-sensitive features. The dataset, which represents 
-                            actual income distribution inequalities, is often utilized in fairness and prejudice research. Due to its structured nature, it serves as a 
-                            benchmark for classification models in machine learning. In this dataset, the sensitive feature that we will be using is gender, 1 if male and 0 
-                            if female. The observed unfair label is income; 1 if >50K and 0 if less than $50K. </p>
-                        
-                        <br><p>The <b>COMPAS dataset:</b> Criminal justice data used to determine the probability of recidivism (reoffending) based on demographic and 
-                            criminal history criteria may be found in the COMPAS dataset, which is gathered by ProPublica. Features including age, sex, race, past crimes, 
-                            and COMPAS risk scores are among them. This dataset has 7214 rows and 5 non-confounding features. Studies have revealed that the COMPAS risk 
-                            assessment tool includes racial discrepancies, making it a crucial resource for assessing ethical difficulties in judicial decision-making and 
-                            predictive policing. As a result, this dataset has been at the center of arguments on algorithmic fairness and bias. For this dataset, 
-                            the sensitive feature is race - 1 if African-American, 0 if not African-American. The observed label is prediction of recidivism - 1 if they 
-                            will reoffend within a 2 year frame and 0 if they won’t.</p>
-
-                        <br><p>The <b>UCI Drug (Cannabis) Consumption Dataset</b> This dataset is taken from UCI Machine Learning Repository. This dataset contains 1884 rows
-                             and 10 non-confounding features. It includes information about how frequently an individual uses cannabis, along with personal information like
-                              gender, ethnicity, and country. The use of this dataset is to predict how likely an individual is to consume cannabis. We pre-process the
-                               dataset so there are 4 groups of likeliness:  (1) never used, (2) not used in the last year, (3) used in the last year, (4) used in the last
+                        <ol>
+                            <li>
+                                <b>Binary Synthetic Dataset:</b> This dataset was synthetically created to evaluate model performance under ideal conditions where the observed label is binary, 
+                                with 5000 rows and 30 features. It consists of a sensitive binary feature S sampled from a binomial distribution, a feature matrix \(X\) influenced by
+                                S and multinomial noise, and a target variable Y derived from a linear function of \(X\) with added noise. With this we have binary fair 
+                                labels Y. To get unfair labels, we inject Y with bias by systematically modifying labels assigned based on S. Y labels will be modified so 
+                                that Y = 1 is more likely for samples where S=1, while Y=0 are for samples where S=0.
+                            </li>
+                            <li>
+                                <b>UCI Adult dataset:</b> This dataset a popular tool for determining if a person makes more than $50,000 annually and is obtained from 
+                                the U.S. Census Bureau. It includes information about age, education, occupation, work class, marital status, and weekly hours worked, among 
+                                other demographic and employment variables. This is a larger dataset with 32,561 rows and 5 non-sensitive features. The dataset, which represents 
+                                actual income distribution inequalities, is often utilized in fairness and prejudice research. Due to its structured nature, it serves as a 
+                                benchmark for classification models in machine learning. In this dataset, the sensitive feature that we will be using is gender, 1 if male and 0 
+                                if female. The observed unfair label is income; 1 if >50K and 0 if less than $50K.
+                            </li>
+                            <li>
+                                <b>COMPAS dataset:</b> Criminal justice data used to determine the probability of recidivism (reoffending) based on demographic and 
+                                criminal history criteria may be found in the COMPAS dataset, which is gathered by ProPublica. Features including age, sex, race, past crimes, 
+                                and COMPAS risk scores are among them. This dataset has 7214 rows and 5 non-confounding features. Studies have revealed that the COMPAS risk 
+                                assessment tool includes racial discrepancies, making it a crucial resource for assessing ethical difficulties in judicial decision-making and 
+                                predictive policing. As a result, this dataset has been at the center of arguments on algorithmic fairness and bias. For this dataset, 
+                                the sensitive feature is race - 1 if African-American, 0 if not African-American. The observed label is prediction of recidivism - 1 if they 
+                                will reoffend within a 2 year frame and 0 if they won’t.
+                            </li>
+                            <li>
+                                <b>UCI Drug (Cannabis) Consumption Dataset</b> This dataset is taken from UCI Machine Learning Repository. This dataset contains 1884 rows
+                                and 10 non-confounding features. It includes information about how frequently an individual uses cannabis, along with personal information like
+                                gender, ethnicity, and country. The use of this dataset is to predict how likely an individual is to consume cannabis. We pre-process the
+                                dataset so there are 4 groups of likeliness:  (1) never used, (2) not used in the last year, (3) used in the last year, (4) used in the last
                                 week. For this dataset, the sensitive feature is education level - 1 if received higher education, 0 if didn’t receive higher education. The
-                                observed label is likeliness of cannabis use.</p>
-
+                                observed label is likeliness of cannabis use.
+                            </li>
+                        </ol>
                     <br><center><h2 class="section-heading">Evaluation Metrics</h2></center>
                         <p>Once we obtained the fair latent variable from the encoder-decoder model, we evaluated its performance using logistic regression. A baseline model
                             was trained on X and observed Y, while another was trained on preprocessed X and fair labels (pseudo_Y). We evaluated performance using the 
@@ -76,7 +81,7 @@
                             <li><b>Area Under the Curve (AUC):</b>Evaluates the model's ability to distinguish between classes, using a one-vs-rest approach for multi-class cases.</li>
                             <li><b>Accuracy:</b>The proportion of correctly predicted labels, providing an overall performance measure.</li>
                         </ol>
-                        <p><b>These metrics help quantify fairness and performance in the learned fair representations.</b></p>
+                        <p><b><em>These metrics help quantify fairness and performance in the learned fair representations.</em></b></p>
                 </div>
             </div>
         </div>
