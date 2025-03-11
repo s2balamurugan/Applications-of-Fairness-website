@@ -51,6 +51,7 @@
                                 includes a sensitive binary feature S, a feature matrix X influenced by S, and a target variable Y derived from X with noise. Fair labels are 
                                 unbiased, while unfair labels introduce bias, making Y = 1 more likely when S = 1. 
                             </li>
+                            <br>
                             <!--
                             <li>
                                 <b>UCI Adult dataset:</b> Popular dataset for determining if a person makes more than $50,000 annually and is obtained from 
@@ -65,6 +66,7 @@
                                 includes information about age, education, occupation, work class, marital status, and weekly hours worked, among other demographic and employment 
                                 variables. The sensitive feature is gender (1 = male, 0 = female). It reflects real-world income disparities and is widely used in fairness research.
                             </li>
+                            <br>
                             <!--
                             <li>
                                 <b>COMPAS dataset:</b> Criminal justice data used to determine the probability of recidivism (reoffending) based on demographic and 
@@ -82,6 +84,7 @@
                                 features, predicting recidivism (1 = reoffend, 0 = not). The sensitive feature is race (1 = African-American, 0 = otherwise). It highlights racial 
                                 biases in predictive policing and algorithmic fairness debates.
                             </li>
+                            <br>
 
                             <!--
                             <li>
@@ -99,6 +102,7 @@
                                 along with personal information like gender, ethnicity, and country.The sensitive feature is education level (1 = higher education, 0 = no 
                                 higher education). The use of this dataset is to predict how likely an individual is to consume cannabis.
                             </li>
+                            
                         </ol>
                     <br><center><h2 class="section-heading">Evaluation Metrics</h2></center>
                         <p>Once we obtained the fair latent variable from the encoder-decoder model, we evaluated its performance using logistic regression. A baseline model
